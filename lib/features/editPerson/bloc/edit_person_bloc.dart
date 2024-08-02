@@ -52,7 +52,7 @@ class EditPersonBloc extends Bloc<EditPersonEvent, EditPersonState> {
       );
 
       await _databaseHandler.updatePerson(updatedPerson);
-      _dashboardBloc.add(LoadDataEvent()); // Reload dashboard data if necessary
+      _dashboardBloc.add(LoadDataEvent());
       emit(state.copyWith(status: StateStatus.success));
     } catch (e) {
       emit(state.copyWith(status: StateStatus.failure, error: e.toString()));
